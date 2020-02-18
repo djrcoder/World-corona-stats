@@ -1,2 +1,3 @@
 # World-corona-stats
- This was developed during my time as a student at Code Chrysalis
+
+This app made was made by engineers-in-training at [Code Chrysalis](https://www.codechrysalis.io/).
