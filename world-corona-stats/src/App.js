@@ -1,11 +1,8 @@
-const express = require("express");
-
-const port = process.env.PORT || 8080;
-const app = express();
-
-app.listen(port, () => console.log(`Listening on Port ${port}`));
-
-// api here
+import React from "react";
+import "./App.css";
+import axios from "axios";
+import SimpleMap from "./components/SimpleMap";
+// import coronaData from "../server/index";
 
 const coronaData = axios({
   method: "GET",
@@ -24,4 +21,15 @@ const coronaData = axios({
     console.log(error);
   });
 
-module.exports = { app };
+console.log(coronaData);
+
+function App() {
+  return (
+    <div className="App">
+      <SimpleMap />
+      <h1>Let's make world corona stats</h1>
+    </div>
+  );
+}
+
+export default App;
