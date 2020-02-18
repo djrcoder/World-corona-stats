@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import axios from "axios";
+import SimpleMap from "./components/SimpleMap";
 // import coronaData from "../server/index";
 
 const coronaData = axios({
@@ -25,6 +26,7 @@ console.log(coronaData);
 function App() {
   return (
     <div className="App">
+      <SimpleMap />
       <h1>Let's make world corona stats</h1>
     </div>
   );
