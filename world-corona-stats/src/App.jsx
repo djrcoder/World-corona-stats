@@ -4,6 +4,7 @@ import "./style/App.css";
 // import Map from "./components/Map";
 import SimpleMap from "./components/SimpleMap";
 import Information from "./components/Information";
+import News from "./components/News";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { Container, Row, Col, Navbar } from "react-bootstrap";
@@ -56,8 +57,7 @@ export default function App() {
 			<Container>
 				<Row>
 					<Col sm={8}>
-						<h1>Map</h1>
-						{/* <SimpleMap /> */}
+						<SimpleMap />
 					</Col>
 					<Col sm={4}>
 						<Navbar bg="dark" variant="dark">
@@ -79,6 +79,7 @@ export default function App() {
 					</Col>
 				</Row>
 			</Container>
+			<News />
 		</div>
 	);
 }
