@@ -5,7 +5,7 @@ import GoogleMapReact, {
   GoogleApiWrapper
 } from "google-map-react";
 import { useEffect } from "react";
-import Mark from "../Marker.tsx";
+import Mark from "../Marker.jsx";
 // import marker from "./img/marker.png";
 require("dotenv").config();
 
