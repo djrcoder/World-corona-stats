@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
+import "../style/news.css";
 export default function News() {
 	const [coronaNews, setCoronaNews] = useState([]);
 	useEffect(() => {
@@ -21,22 +22,21 @@ export default function News() {
 				}
 			})
 				.then((response) => {
-					setCoronaNews(response.data.value);
-					const src = Object.keys(response.data.value[0].image)[0];
-					console.log(response.data.value);
-					console.log(response.data.value[0].image.thumbnail.contentUrl);
+					console.log(response);
+					//push ones with image to array
+					setCoronaNews(response.data.value.filter((obj) => obj.image));
 				})
 				.catch((error) => {
 					console.log(error);
 				});
 		})();
 	}, []);
+	console.log(coronaNews);
 	return (
 		<div className="corona-news">
 			{coronaNews.map((news, idx) => {
 				return (
-					<Card className="news-card" key={idx} style={{ width: "18rem" }}>
-						<Card.Img variant="top" />
+					<Card className="news-card" key={idx}>
 						<Card.Body>
 							<Card.Title>{news.name}</Card.Title>
 							<Card.Text>{news.description}</Card.Text>
