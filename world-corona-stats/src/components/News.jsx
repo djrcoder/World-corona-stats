@@ -18,7 +18,7 @@ export default function News() {
 					"x-rapidapi-key": "287a779037mshc14498a1ac0ebc0p1b8a7fjsn8e058dbd8350"
 				},
 				params: {
-					q: "corona"
+					q: "corona virus"
 				}
 			})
 				.then((response) => {
@@ -36,7 +36,11 @@ export default function News() {
 		<div className="corona-news">
 			{coronaNews.map((news, idx) => {
 				return (
-					<Card className="news-card" key={idx}>
+					<Card
+						style={{ border: "1px solid black" }}
+						className="news-card"
+						key={idx}
+					>
 						<Card.Body>
 							<Card.Title>{news.name}</Card.Title>
 							<Card.Text>{news.description}</Card.Text>
