@@ -1,6 +1,17 @@
 .App {
   text-align: center;
 }
+.infHeader {
+  font-size: 20px;
+}
+.infContent {
+  text-align: left;
+}
+
+.scrollbar {
+  overflow: scroll;
+  height: 300px;
+}
 
 /* .App-logo {
   height: 40vmin;
