@@ -4,30 +4,6 @@ import axios from "axios";
 import SimpleMap from "./components/SimpleMap";
 // import coronaData from "../server/index";
 
-export let countriesNames = [];
-
-const coronaData = axios({
-  method: "GET",
-  url:
-    "https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php",
-  headers: {
-    "content-type": "application/octet-stream",
-    "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
-    "x-rapidapi-key": "130e574162msh6cc16dbd234fc6ep18d4e3jsn9a2bc8ca2759"
-  }
-})
-  .then(response => {
-    response.data.countries_stat.map(country => {
-      countryNames.push(country.country_name);
-    });
-    console.log(countriesNames);
-  })
-  .catch(error => {
-    console.log(error);
-  });
-
-console.log(coronaData);
-
 // pass corona data down as props
 
 function App() {
