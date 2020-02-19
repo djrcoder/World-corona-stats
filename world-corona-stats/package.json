@@ -6,11 +6,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-<<<<<<< HEAD
     "axios": "^0.19.2",
-=======
     "bootstrap": "^4.4.1",
->>>>>>> af1030d77ef4fbac42a3bb5dadb0e3cb5f98d961
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "google-map-react": "^1.1.6",
