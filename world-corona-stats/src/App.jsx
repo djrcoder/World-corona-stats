@@ -37,7 +37,7 @@ export default function App() {
         <Row>
           <Col sm={8}>
             <h1>Map</h1>
-            {/* <SimpleMap /> */}
+            <SimpleMap />
           </Col>
           <Col sm={4}>
             {allInformation.map(inf => {
