@@ -1,8 +1,10 @@
 import React from "react";
-import "./App.css";
+// import "./App.css";
 import axios from "axios";
 import SimpleMap from "./components/SimpleMap";
 // import coronaData from "../server/index";
+
+export let countriesNames = [];
 
 const coronaData = axios({
   method: "GET",
@@ -15,13 +17,18 @@ const coronaData = axios({
   }
 })
   .then(response => {
-    console.log(response);
+    response.data.countries_stat.map(country => {
+      countryNames.push(country.country_name);
+    });
+    console.log(countriesNames);
   })
   .catch(error => {
     console.log(error);
   });
 
 console.log(coronaData);
+
+// pass corona data down as props
 
 function App() {
   return (
