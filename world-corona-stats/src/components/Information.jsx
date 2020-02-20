@@ -7,7 +7,7 @@ export default function Information(props) {
   return (
     <>
       <br />
-      <Card border="dark" className="Card">
+      <Card border="dark" className="Card{">
         <Card.Header className="infHeader">{props.country_name}</Card.Header>
         <Card.Body className="infContent">
           <Card.Text>Cases : {props.cases}</Card.Text>

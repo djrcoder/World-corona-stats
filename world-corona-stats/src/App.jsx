@@ -11,6 +11,14 @@ import { Container, Row, Col, Navbar } from "react-bootstrap";
 
 export default function App() {
   const [allInformation, setAllInformation] = useState([]);
+  const [language, setLanguage] = useState("en-US");
+
+  const onJapanButton = () => {
+    setLanguage("ja-JP");
+  };
+  const onEnglishButton = () => {
+    setLanguage("en-US");
+  };
 
   useEffect(async () => {
     const coronaData = await axios({
@@ -86,7 +94,7 @@ export default function App() {
             <SimpleMap />
           </Col>
           <Col sm={4}>
-            <Navbar bg="dark" variant="dark">
+            <Navbar bg="dark" variant="dark" className="Navbar">
               <Navbar.Brand>Information Of Corona</Navbar.Brand>
             </Navbar>
             <div className="scrollbar">
@@ -105,8 +113,11 @@ export default function App() {
           </Col>
         </Row>
       </Container>
-      <br />
-      <News />
+      <div>
+        <button onClick={() => onJapanButton()}>Japanese</button>
+        <button onClick={() => onEnglishButton()}>English</button>
+      </div>
+      <News language={language} />
     </div>
   );
 }
