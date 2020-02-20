@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
+import Dropdown from "react-bootstrap/Dropdown";
+import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "../style/news.css";
 export default function News() {
 	const [coronaNews, setCoronaNews] = useState([]);
+	const [newsLanguage, setNewsLanguage] = useState("en-US");
 	useEffect(() => {
 		(async function() {
 			const newsData = await axios({
@@ -18,7 +21,8 @@ export default function News() {
 					"x-rapidapi-key": "287a779037mshc14498a1ac0ebc0p1b8a7fjsn8e058dbd8350"
 				},
 				params: {
-					q: "corona virus"
+					q: "corona virus",
+					mkt: newsLanguage
 				}
 			})
 				.then((response) => {
@@ -34,10 +38,23 @@ export default function News() {
 	console.log(coronaNews);
 	return (
 		<div className="corona-news">
+			<div className="news-nav">
+				<Dropdown>
+					<Dropdown.Toggle id="dropdown-basic">Dropdown Button</Dropdown.Toggle>
+					<Dropdown.Menu>
+						<Dropdown.Item onClick={setNewsLanguage("ja-JP")}>
+							English
+						</Dropdown.Item>
+						<Dropdown.Item onClick={setNewsLanguage("en-US")}>
+							Japanese
+						</Dropdown.Item>
+					</Dropdown.Menu>
+				</Dropdown>
+			</div>
 			{coronaNews.map((news, idx) => {
 				return (
 					<Card
-						style={{ border: "1px solid black" }}
+						style={({ border: "1px solid black" }, { width: "90%" })}
 						className="news-card"
 						key={idx}
 					>
