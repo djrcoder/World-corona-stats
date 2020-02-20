@@ -11,6 +11,14 @@ import { Container, Row, Col, Navbar } from "react-bootstrap";
 
 export default function App() {
   const [allInformation, setAllInformation] = useState([]);
+  const [language, setLanguage] = useState("en-US");
+
+  const onJapanButton = () => {
+    setLanguage("ja-JP");
+  };
+  const onEnglishButton = () => {
+    setLanguage("en-US");
+  };
 
   useEffect(async () => {
     const coronaData = await axios({
@@ -24,8 +32,9 @@ export default function App() {
       }
     });
 
-    let country_state = coronaData.data.countries_stat;
-    console.log(coronaData);
+    let country_state = coronaData.data.countries_stat.filter(inf => {
+      return inf.country_name !== "DiamondPrincess";
+    });
 
     const popData = await axios({
       method: "GET",
@@ -40,8 +49,33 @@ export default function App() {
     let country_state_including_pop = country_state.map(inf => {
       inf.population = "Missing";
       popData.data.map(popInf => {
-        if (popInf.name === inf.country_name)
-          inf.population = +popInf.population;
+        if (popInf.name === inf.country_name) {
+          inf.population = (+popInf.population).toLocaleString();
+        } else {
+          switch (inf.country_name) {
+            case "HongKong":
+              inf.population = "7,475,077";
+              break;
+            case "SouthKorea":
+              inf.population = "51,253,422";
+              break;
+            case "UnitedStates":
+              inf.population = "330,305,392";
+              break;
+            case "Macao":
+              inf.population = "646,128";
+              break;
+            case "UnitedKingdom":
+              inf.population = "67,757,994";
+              break;
+            case "UnitedArabEmirates":
+              inf.population = "9,847,180";
+              break;
+            case "SriLanka":
+              inf.population = "21,381,056";
+              break;
+          }
+        }
       });
       return inf;
     });
@@ -60,8 +94,8 @@ export default function App() {
             <SimpleMap />
           </Col>
           <Col sm={4}>
-            <Navbar bg="dark" variant="dark">
-              <Navbar.Brand>Information</Navbar.Brand>
+            <Navbar bg="dark" variant="dark" className="Navbar">
+              <Navbar.Brand>Information Of Corona</Navbar.Brand>
             </Navbar>
             <div className="scrollbar">
               {allInformation.map(inf => {
@@ -79,7 +113,11 @@ export default function App() {
           </Col>
         </Row>
       </Container>
-      <News />
+      <div>
+        <button onClick={() => onJapanButton()}>Japanese</button>
+        <button onClick={() => onEnglishButton()}>English</button>
+      </div>
+      <News language={language} />
     </div>
   );
 }

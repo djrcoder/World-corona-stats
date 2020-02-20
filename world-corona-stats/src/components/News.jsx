@@ -4,10 +4,10 @@ import Card from "react-bootstrap/Card";
 import axios from "axios";
 import "../style/news.css";
 require("dotenv").config();
-export default function News() {
+
+export default function News(props) {
+	const { language } = props;
 	const [coronaNews, setCoronaNews] = useState([]);
-	console.log(process.env.BING_NEWS_API_KEY);
-	console.log(`${process.env.BING_NEWS_API_KEY}`);
 	useEffect(() => {
 		(async function() {
 			const newsData = await axios({
@@ -18,10 +18,11 @@ export default function News() {
 					"content-type": "application/octet-stream",
 					"x-rapidapi-host":
 						"microsoft-azure-bing-news-search-v1.p.rapidapi.com",
-					"x-rapidapi-key": `${process.env.BING_NEWS_API_KEY}`
+					"x-rapidapi-key": process.env.REACT_APP_API_KEY_NEWS
 				},
 				params: {
-					q: "corona virus"
+					q: "corona virus",
+					mkt: `${props.language}`
 				}
 			})
 				.then((response) => {
@@ -33,8 +34,7 @@ export default function News() {
 					console.log(error);
 				});
 		})();
-	}, []);
-	console.log(coronaNews);
+	}, [props.language]);
 	return (
 		<div className="corona-news">
 			{coronaNews.map((news, idx) => {
