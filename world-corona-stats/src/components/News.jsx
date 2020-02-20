@@ -3,9 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
 import "../style/news.css";
+require("dotenv").config();
+
 export default function News(props) {
   const { language } = props;
-  console.log(props.language);
   const [coronaNews, setCoronaNews] = useState([]);
   useEffect(() => {
     (async function() {
@@ -17,7 +18,7 @@ export default function News(props) {
           "content-type": "application/octet-stream",
           "x-rapidapi-host":
             "microsoft-azure-bing-news-search-v1.p.rapidapi.com",
-          "x-rapidapi-key": "287a779037mshc14498a1ac0ebc0p1b8a7fjsn8e058dbd8350"
+          "x-rapidapi-key": process.env.REACT_APP_API_KEY_NEWS
         },
         params: {
           q: "corona virus",
