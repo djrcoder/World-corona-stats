@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import "../style/news.css";
 require("dotenv").config();
 
 export default function News(props) {
-	const { language } = props;
 	const [coronaNews, setCoronaNews] = useState([]);
 	useEffect(() => {
 		(async function() {
