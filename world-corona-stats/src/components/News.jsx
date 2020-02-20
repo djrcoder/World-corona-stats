@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
-import Dropdown from "react-bootstrap/Dropdown";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "../style/news.css";
+require("dotenv").config();
 export default function News() {
 	const [coronaNews, setCoronaNews] = useState([]);
-	const [newsLanguage, setNewsLanguage] = useState("en-US");
+	console.log(process.env.BING_NEWS_API_KEY);
+	console.log(`${process.env.BING_NEWS_API_KEY}`);
 	useEffect(() => {
 		(async function() {
 			const newsData = await axios({
@@ -18,11 +18,10 @@ export default function News() {
 					"content-type": "application/octet-stream",
 					"x-rapidapi-host":
 						"microsoft-azure-bing-news-search-v1.p.rapidapi.com",
-					"x-rapidapi-key": "287a779037mshc14498a1ac0ebc0p1b8a7fjsn8e058dbd8350"
+					"x-rapidapi-key": `${process.env.BING_NEWS_API_KEY}`
 				},
 				params: {
-					q: "corona virus",
-					mkt: newsLanguage
+					q: "corona virus"
 				}
 			})
 				.then((response) => {
@@ -38,23 +37,10 @@ export default function News() {
 	console.log(coronaNews);
 	return (
 		<div className="corona-news">
-			<div className="news-nav">
-				<Dropdown>
-					<Dropdown.Toggle id="dropdown-basic">Dropdown Button</Dropdown.Toggle>
-					<Dropdown.Menu>
-						<Dropdown.Item onClick={setNewsLanguage("ja-JP")}>
-							English
-						</Dropdown.Item>
-						<Dropdown.Item onClick={setNewsLanguage("en-US")}>
-							Japanese
-						</Dropdown.Item>
-					</Dropdown.Menu>
-				</Dropdown>
-			</div>
 			{coronaNews.map((news, idx) => {
 				return (
 					<Card
-						style={({ border: "1px solid black" }, { width: "90%" })}
+						style={{ border: "1px solid black" }}
 						className="news-card"
 						key={idx}
 					>
