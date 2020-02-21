@@ -1,8 +1,7 @@
 # World corona stats
-This was created during our time as students at Code Chrysalis.
+This was created during our time as students at [Code Chrysalis](https://www.codechrysalis.io/).
 
-Try our app here
-https://world-corona-stats.herokuapp.com/
+Try our app [here](https://world-corona-stats.herokuapp.com).
 
 ## Setup instructions
 
@@ -16,5 +15,8 @@ https://world-corona-stats.herokuapp.com/
 ```yarn start```
 
 ## Authors
-
-  
+- [Kasumi](https://github.com/Kasumy1215)
+- [Ryuki Kuga](https://github.com/ryukikikie)
+- [Nemanja Milenkovic](https://github.com/NemanjaMilenkovic)
+- [Genta Shibasaki](https://github.com/GentaShibasaki)
+- [Daniel Reaney](https://github.com/djrcoder)
