@@ -15,7 +15,7 @@ Try our app [here](https://world-corona-stats.herokuapp.com).
 ```yarn start```
 
 ## Authors
-- [Kasumi](https://github.com/Kasumy1215)
+- [Kasumi Nakano](https://github.com/Kasumy1215)
 - [Ryuki Kuga](https://github.com/ryukikikie)
 - [Nemanja Milenkovic](https://github.com/NemanjaMilenkovic)
 - [Genta Shibasaki](https://github.com/GentaShibasaki)
